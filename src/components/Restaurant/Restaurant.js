@@ -12,6 +12,10 @@ const Restaurant = () => {
     setInputText(e.target.value);
   };
 
+  const handleAddToCart = (meal) => {
+    console.log(meal);
+  };
+
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${inputText}`)
       .then((res) => res.json())
@@ -49,7 +53,11 @@ const Restaurant = () => {
       <section className="restaurant-menu">
         <div className="meals-container">
           {meals.map((meal) => (
-            <Meal key={meal.idMeal} meal={meal}></Meal>
+            <Meal
+              key={meal.idMeal}
+              handleAddToCart={handleAddToCart}
+              meal={meal}
+            ></Meal>
           ))}
         </div>
         <div className="order-list ">

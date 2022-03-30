@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Meal.css';
 
-const Meal = ({ meal }) => {
+const Meal = ({ meal, handleAddToCart }) => {
   const { idMeal, strMeal, strInstructions, strMealThumb } = meal;
   const navigate = useNavigate();
   const handleDetailsBtn = () => {
@@ -20,7 +20,10 @@ const Meal = ({ meal }) => {
       <h3 className="my-2 text-2xl">{strMeal}</h3>
       <p className="cursor-crosshair">{strInstructions.slice(0, 100)}</p>
       <div className="flex justify-evenly">
-        <button className="bg-teal-600 my-2 py-1 px-3 rounded">
+        <button
+          onClick={() => handleAddToCart(meal)}
+          className="bg-teal-600 my-2 py-1 px-3 rounded"
+        >
           Add this Food
         </button>
         <button
