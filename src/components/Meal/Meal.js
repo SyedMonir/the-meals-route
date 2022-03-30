@@ -1,18 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Meal.css';
 
 const Meal = ({ meal }) => {
-  const { strMeal, strInstructions, strMealThumb } = meal;
-  const handleDetailsBtn = (mealDetails) => {
-    <Link to={`/${mealDetails.mealId}`}></Link>;
+  const { idMeal, strMeal, strInstructions, strMealThumb } = meal;
+  const navigate = useNavigate();
+  const handleDetailsBtn = () => {
+    navigate('/meal/' + idMeal);
   };
 
   return (
     <div className="meal">
-      <img src={strMealThumb} alt="" />
+      <img
+        onClick={() => handleDetailsBtn(meal)}
+        src={strMealThumb}
+        alt={strMeal}
+        className="cursor-pointer"
+      />
       <h3 className="my-2 text-2xl">{strMeal}</h3>
-      <p>{strInstructions.slice(0, 100)}</p>
+      <p className="cursor-crosshair">{strInstructions.slice(0, 100)}</p>
       <div className="flex justify-evenly">
         <button className="bg-teal-600 my-2 py-1 px-3 rounded">
           Add this Food
