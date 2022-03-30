@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import Meal from '../Meal/Meal';
 import OrderList from '../OrderList/OrderList';
 import './Restaurant.css';
@@ -55,6 +56,7 @@ const Restaurant = () => {
         <div className="order-list ">
           <OrderList orders={orders}></OrderList>
         </div>
+        <Outlet />
       </section>
     </section>
   );
