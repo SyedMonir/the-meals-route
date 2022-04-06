@@ -52,7 +52,7 @@ const Restaurant = () => {
 
       <section className="restaurant-menu">
         <div className="meals-container">
-          {meals.map((meal) => (
+          {meals?.map((meal) => (
             <Meal
               key={meal.idMeal}
               handleAddToCart={handleAddToCart}
